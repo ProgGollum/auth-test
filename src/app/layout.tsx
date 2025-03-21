@@ -4,6 +4,7 @@ import "./globals.css";
 import {useContext} from "react";
 import {StoreContext} from "@/store/StoreContext";
 import {StoreWrapper} from "@/store/StoreContext";
+import {UserProvider} from "@/Context/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,9 +31,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-          <StoreWrapper>
+          <UserProvider>
             {children}
-          </StoreWrapper>
+          </UserProvider>
       </body>
     </html>
   );

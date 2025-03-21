@@ -1,11 +1,13 @@
 'use client'
 import React, {FC, useContext, useState} from 'react';
-// import {StoreContext, useStores} from "@/store/StoreContext";
+import {useAuth} from "@/Context/AuthContext";
+import {register} from "node:module";
+
 
 const LoginForm: FC = () => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    // const {store} = useContext(StoreContext)
+    const store = useAuth();
 
     return (
         <div>
@@ -21,8 +23,8 @@ const LoginForm: FC = () => {
                 type="password"
                 placeholder="Password"
             />
-            <button>Login</button>
-            <button>Registration</button>
+            <button onClick={() => store.login(email, password)}>Login</button>
+            <button onClick={() => store.register(email, password)}>Registration</button>
         </div>
     );
 };
